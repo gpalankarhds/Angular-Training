@@ -1,0 +1,96 @@
+<app-carousel [data]="carouselData" *ngIf="showWidget1"></app-carousel>
+
+<div class="container">
+  <app-card-container [title]="title">
+    <app-card *ngFor="let card of products" [img]="card.imageurl">
+      <h5 class="card-title">{{ card.brand_varient_id }}</h5>
+      <p class="card-text">
+        {{ card.itemvarient_desc }}
+      </p>
+      <button type="button" class="btn btn-primary btn-block">
+        Add To Cart
+      </button>
+    </app-card>
+  </app-card-container>
+</div>
+<br />
+
+<div class="container">
+  <app-card-container [title]="'Trending Packs'">
+    <app-card *ngFor="let card of products2" [img]="card.imageurl">
+      <h5 class="card-title">{{ card.brand_varient_id }}</h5>
+      <p class="card-text">
+        {{ card.itemvarient_desc }}
+      </p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let ing of card.ingredients">
+          {{ ing }}
+        </li>
+      </ul>
+      <div class="text-center">
+        <button type="button" class="btn btn-primary">Add To Cart</button>
+      </div>
+    </app-card>
+  </app-card-container>
+</div>
+<br />
+
+<div class="container">
+  <div class="text-center">
+    <h3>Component Data Sharing</h3>
+  </div>
+
+  <section>
+    <div class="row">
+      <div class="col">
+        <div class="text-center"><h4>Parent & Child</h4></div>
+        <app-parent></app-parent>
+      </div>
+      <div class="col">
+        <div class="text-center"><h4>Sibling</h4></div>
+        <app-sibling></app-sibling>
+      </div>
+    </div>
+  </section>
+
+  <div class="text-center">
+    <h3>Life Cycle Hooks</h3>
+  </div>
+
+  <section>
+    <div class="row">
+      <div class="col-12">
+        <div class="text-center"><h4>On Changes</h4></div>
+        <app-on-changes></app-on-changes>
+      </div>
+      <div class="col-12">
+        <div class="text-center"><h4>On Init</h4></div>
+        <app-on-init></app-on-init>
+      </div>
+      <div class="col-12">
+        <div class="text-center"><h4>On Do Check</h4></div>
+        <app-on-docheck></app-on-docheck>
+      </div>
+      <div class="col-12">
+        <div class="text-center"><h4>On After Content Init</h4></div>
+        <app-on-after-content-init></app-on-after-content-init>
+      </div>
+      <div class="col-12">
+        <div class="text-center"><h4>On After Content Checked</h4></div>
+        <app-on-after-content-checked></app-on-after-content-checked>
+      </div>
+      <div class="col-12">
+        <div class="text-center"><h4>On After View Init</h4></div>
+        <app-on-after-view-init></app-on-after-view-init>
+      </div>
+      <div class="col-12">
+        <div class="text-center"><h4>On After View Checked</h4></div>
+        <app-on-after-view-checked></app-on-after-view-checked>
+      </div>
+      <div class="col-12">
+        <div class="text-center"><h4>On Destroy</h4></div>
+        <app-on-destroy></app-on-destroy>
+      </div>
+    </div>
+  </section>
+</div>

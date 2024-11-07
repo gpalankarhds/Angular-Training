@@ -1,0 +1,165 @@
+<div class="container">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-4">
+        <div class="mb-3">
+          <label for="name" class="form-label">Product Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Product Name"
+            formControlName="name"
+            required
+          />
+          <div *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+            <div
+              *ngIf="name?.errors?.['required']"
+              class="invalid-feedback"
+              style="display: block"
+            >
+              Name is required.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="mb-3">
+          <label for="description" class="form-label"
+            >Product Description</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            placeholder="Product Description"
+            formControlName="description"
+            required
+          />
+
+          <div
+            *ngIf="
+              description?.invalid &&
+              (description?.dirty || description?.touched)
+            "
+          >
+            <div
+              *ngIf="description?.errors?.['required']"
+              class="invalid-feedback"
+              style="display: block"
+            >
+              Description is required.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="mb-3">
+          <label for="image" class="form-label">Product Image</label>
+          <input
+            type="text"
+            class="form-control"
+            id="image"
+            placeholder="Product Image"
+            formControlName="imageUrl"
+          />
+
+          <div
+            *ngIf="imageUrl?.invalid && (imageUrl?.dirty || imageUrl?.touched)"
+          >
+            <div
+              *ngIf="imageUrl?.errors?.['required']"
+              class="invalid-feedback"
+              style="display: block"
+            >
+              Image is required.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="mb-3">
+          <label for="mrp" class="form-label">Product MRP</label>
+          <input
+            type="number"
+            class="form-control"
+            id="mrp"
+            placeholder="Product MRP"
+            formControlName="mrp"
+          />
+
+          <div *ngIf="mrp?.invalid && (mrp?.dirty || mrp?.touched)">
+            <div
+              *ngIf="mrp?.errors?.['required']"
+              class="invalid-feedback"
+              style="display: block"
+            >
+              MRP is required.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="mb-3">
+          <label for="discount" class="form-label">Product Discount</label>
+          <input
+            type="number"
+            class="form-control"
+            id="discount"
+            placeholder="Product Discount"
+            formControlName="discount"
+          />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="mb-3">
+          <label for="category" class="form-label">Product Category</label>
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            formControlName="category"
+          >
+            <option [value]="item.value" *ngFor="let item of categories">
+              {{ item.displayName }}
+            </option>
+          </select>
+
+          <div
+            *ngIf="category?.invalid && (category?.dirty || category?.touched)"
+          >
+            <div
+              *ngIf="category?.errors?.['required']"
+              class="invalid-feedback"
+              style="display: block"
+            >
+              Category is required.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-end">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!productForm.valid"
+      >
+        Add Product
+      </button>
+    </div>
+  </form>
+  <br />
+
+  <!-- Product List -->
+  <div class="row">
+    <div class="col-12">
+      <ag-grid-angular
+        #agGrid
+        class="ag-theme-quartz"
+        style="height: 500px"
+        [rowData]="productsList"
+        [columnDefs]="colDefs"
+      />
+    </div>
+  </div>
+</div>

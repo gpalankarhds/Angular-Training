@@ -1,0 +1,10 @@
+.container-fluid {
+  background-color: lightgray;
+}
+
+.scrolling-wrapper-flexbox {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 10px;
+}

@@ -1,0 +1,15 @@
+<p>Parent Component!</p>
+
+<div>Get data from child :: {{ showDataFromChild }}</div>
+
+<button (click)="sendDataToChild()" class="btn btn-primary">
+  Send data to child
+</button>
+<button (click)="sendDataToSibling()" class="btn btn-success">
+  Send data to sibling
+</button>
+
+<app-child
+  [dataToChild]="data"
+  (sendDataFromChild)="sendDataToParent($event)"
+></app-child>
